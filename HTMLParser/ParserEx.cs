@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
+using System.Linq;
 
 namespace HTMLParser
 {
@@ -36,7 +37,6 @@ namespace HTMLParser
 			if (string.IsNullOrEmpty(article)) return string.Empty;
 
 			string pttrn = @"((?:(?:https?|http|ftp|gopher|telnet|file|notes|ms-help):(?://|\\\\)(?:www\.)?|www\.)[\w\d:#@%/;$()~_?\+,\-=\\.&]+)";
-
 			string lnk = "<a href=\"$1\" target=\"_blank\">$1</a>";
 
 			return Regex.Replace(article, pttrn, lnk, RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(150)).Replace("href=\"www.", "href=\"http://www.");
@@ -75,7 +75,7 @@ namespace HTMLParser
 
 		public string ParseUrlAndYoutube(string article)
 		{
-			return this.ParseYoutube(this.ParseUrl(article));
+			return this.GenerateYoutubeScripts(article).First() + this.ParseYoutube(this.ParseUrl(article));
 		}
 	}
 }
