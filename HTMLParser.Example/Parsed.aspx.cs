@@ -21,8 +21,8 @@ namespace HTMLParser.Example
 			ParserEx parse = new ParserEx();
 
 			this.ParsedUrl.InnerHtml = parse.ParseUrl(this.txtSource.Value);
-			this.parsedYoutube.InnerHtml = parse.GenerateYoutubeScripts(this.txtSource.Value).First();
-			this.parsedUrlAndYoutube.InnerHtml = parse.GenerateYoutubeScripts(this.txtSource.Value).First() + parse.ParseUrl(this.txtSource.Value);
+			this.parsedYoutube.InnerHtml = parse.GenerateYoutubeScripts(this.txtSource.Value).FirstOrDefault() ?? "";
+			this.parsedUrlAndYoutube.InnerHtml = parse.ParseUrlAndYoutube(this.txtSource.Value);
 		}
 	}
 }

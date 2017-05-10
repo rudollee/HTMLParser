@@ -59,7 +59,7 @@ namespace HTMLParser
 
 		public List<string> GenerateYoutubeScripts(string article)
 		{
-			if (string.IsNullOrEmpty(article)) return null;
+			if (string.IsNullOrEmpty(article)) return new List<string>(new string[] { "" });
 
 			Regex regex = new Regex(@"youtu(?:\.be|be\.com)/(?:.*v(?:/|=)|(?:.*/)?)([a-zA-Z0-9-_]+)");
 			Match match = regex.Match(article);
@@ -75,7 +75,7 @@ namespace HTMLParser
 
 		public string ParseUrlAndYoutube(string article)
 		{
-			return this.GenerateYoutubeScripts(article).First() + this.ParseUrl(article);
+			return this.GenerateYoutubeScripts(article).FirstOrDefault() ?? "" + this.ParseUrl(article);
 		}
 	}
 }
