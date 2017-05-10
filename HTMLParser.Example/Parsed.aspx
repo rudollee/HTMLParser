@@ -6,9 +6,8 @@
 <head runat="server">
     <title></title>
 	<style type="text/css">
-		#source {
-			width: 293px;
-			height: 99px;
+		body {
+			width: 600px;
 		}
 	</style>
 </head>
