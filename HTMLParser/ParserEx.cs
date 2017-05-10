@@ -75,7 +75,7 @@ namespace HTMLParser
 
 		public string ParseUrlAndYoutube(string article)
 		{
-			return this.GenerateYoutubeScripts(article).First() + this.ParseYoutube(this.ParseUrl(article));
+			return this.GenerateYoutubeScripts(article).First() + this.ParseUrl(article);
 		}
 	}
 }
